@@ -1,0 +1,51 @@
+{
+  "name": "mind-me",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^0.0.52",
+    "@ai-sdk/openai": "^0.0.70",
+    "@clerk/nextjs": "^5.7.1",
+    "@clerk/themes": "^2.1.35",
+    "@google/generative-ai": "^0.21.0",
+    "@hookform/resolvers": "^3.9.0",
+    "@pinecone-database/pinecone": "^3.0.3",
+    "@prisma/client": "^5.20.0",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "ai": "^3.4.9",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "lucide-react": "^0.451.0",
+    "next": "14.2.15",
+    "next-themes": "^0.3.0",
+    "openai": "^4.67.3",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "prisma": "^5.20.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "tailwind-merge": "^2.5.3",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.15",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
