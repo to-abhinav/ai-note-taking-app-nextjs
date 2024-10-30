@@ -10,7 +10,8 @@ import AddEditNoteDialog from "@/components/AddEditNoteDialog";
 import { ThemeToggleButton } from "@/components/ThemeToggleButton";
 import {dark} from "@clerk/themes"
 import { useTheme } from "next-themes";
-import AIChatButton from "@/components/AIChatButton";
+// import AIChatButton from "@/components/AIChatButton";
+import AIChatButtonBubble from "@/components/AIChatButtonBubble";
 
 function Navbar() {
   const theme = useTheme();
@@ -42,11 +43,12 @@ function Navbar() {
               }}
             />
             <ThemeToggleButton />
-            <AIChatButton />
+            {/* <AIChatButton /> */}
           </div>
         </div>
       </div>
       <AddEditNoteDialog open={showAddEditNoteDialog} setOpen={setShowAddEditNoteDialog} />
+      <AIChatButtonBubble />
     </>
   );
 }

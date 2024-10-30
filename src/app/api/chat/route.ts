@@ -21,6 +21,7 @@ export async function POST(req: Request) {
         const embedding = await getEmbedding(
             truncatedMessage.map((message)=> message.content).join("\n")  
         )
+        
         console.log("Embedding generated", embedding);
         const vectorQueryResponse = await noteIndex.query({
             vector: embedding,

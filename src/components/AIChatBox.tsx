@@ -27,6 +27,25 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Sound effect for message send
+  const playSendSound = () => {
+    const audio = new Audio("/assets/send_sound.mp3");
+    audio.play();
+    console.log("Sound played");
+
+  };
+  const playReceiveSound = () => {
+    const audio = new Audio("/assets/receive_sound.mp3");
+    audio.play();
+    console.log("Sound played");
+  }
+
+  useEffect(() => {
+    if (!isLoading && messages[messages.length - 1]?.role === "assistant") {
+      playReceiveSound();
+    }
+  }, [isLoading, messages]);
+
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -41,17 +60,23 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
 
   const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
+  // Wrap handleSubmit to play sound on submit
+  const handleFormSubmit = (event: React.FormEvent) => {
+    handleSubmit(event);
+    playSendSound(); // Play sound when user sends a message
+  };
+
   return (
     <div
       className={cn(
-        "bottom-0 right-0 z-10 w-full max-w-[500px] p-1 xl:right-36",
+        "xl:bottom-0 bottom-16 right-0 z-10 w-full max-w-[500px] p-1 xl:right-36 animate-fadeIn",
         open ? "fixed" : "hidden",
       )}
     >
       <button onClick={onClose} className="mb-1 ms-auto block">
         <XCircle size={30} />
       </button>
-      <div className="flex h-[600px] flex-col rounded border bg-background shadow-xl">
+      <div className="flex h-[600px] flex-col rounded border bg-[url('https://res.cloudinary.com/dlkre2bxo/image/upload/v1730226037/v904-nunny-012-min_bfei1r.jpg')] bg-background bg-cover shadow-2xl">
         <div className="mt-3 h-full overflow-y-auto px-3" ref={scrollRef}>
           {messages.map((message) => (
             <ChatMessage message={message} key={message.id} />
@@ -73,13 +98,13 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             />
           )}
           {!error && messages.length === 0 && (
-            <div className="flex h-full items-center justify-center gap-3">
+            <div className="flex h-full items-center justify-center gap-3 text-gray-600">
               <Bot />
               Ask the AI a question about your notes
             </div>
           )}
         </div>
-        <form onSubmit={handleSubmit} className="m-3 flex gap-1">
+        <form onSubmit={handleFormSubmit} className="m-3 flex gap-1">
           <Button
             title="Clear chat"
             variant="outline"
@@ -104,7 +129,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
 }
 
 function ChatMessage({
-  message: { role, content }
+  message: { role, content },
 }: {
   message: Pick<Message, "role" | "content">;
 }) {
@@ -119,10 +144,10 @@ function ChatMessage({
         isAiMessage ? "me-5 justify-start" : "ms-5 justify-end",
       )}
     >
-      {isAiMessage && <Bot className="mr-2 shrink-0" />}
+      {isAiMessage &&  <Bot className="mr-2 shrink-0 dark:text-black" />}
       <p
         className={cn(
-          "whitespace-pre-line rounded-md border px-3 py-2", `{$class}`,
+          "whitespace-pre-line rounded-md border px-3 py-2",
           isAiMessage ? "bg-background" : "bg-primary text-primary-foreground",
         )}
       >
