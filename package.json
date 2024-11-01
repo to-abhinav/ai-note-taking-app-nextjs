@@ -9,11 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ai-sdk/google": "^0.0.52",
     "@ai-sdk/openai": "^0.0.70",
     "@clerk/nextjs": "^5.7.1",
     "@clerk/themes": "^2.1.35",
-    "@google/generative-ai": "^0.21.0",
     "@hookform/resolvers": "^3.9.0",
     "@pinecone-database/pinecone": "^3.0.3",
     "@prisma/client": "^5.20.0",
@@ -24,7 +22,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "eslint-config-prettier": "^9.1.0",
-    "howler": "^2.2.4",
     "lucide-react": "^0.451.0",
     "next": "14.2.15",
     "next-themes": "^0.3.0",
