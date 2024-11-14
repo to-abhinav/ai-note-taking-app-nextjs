@@ -1,6 +1,8 @@
 
 # Intelligent Note-Taking App with Chatbot
 
+## I will be adding collaborative feature to this project..! After my exam ends! It's going to end on 7th november 2024.
+
 This application is a **Next.js-powered intelligent note-taking app** that combines note management with an AI-based chatbot. The bot has access to all saved notes and enables interaction based on their content.
 
 ## Key Features
